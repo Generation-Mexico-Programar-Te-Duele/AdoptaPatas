@@ -12,7 +12,7 @@ function Navbar() {
 
   const content =
     <>
-      <div className='lg:hidden block absolute top-14 w-full left-0 right-0 h-[100vh]
+      <div className='lg:hidden block absolute z-20 top-14 w-full left-0 right-0 h-[100vh]
       py-8 bg-main-bg-color'>
         <ul className='text-center text-[1.1rem] p-20'>
           <Link  to='/pet-card'>
@@ -47,13 +47,13 @@ function Navbar() {
           <div className='flex-10 '>
             <ul className='flex gap-10 mr-1 items-center'>
               <Link  to='/pet.card'>
-                <li className='hover:text-black transition cursor-pointer' >Adoptar</li>
+                <li className='hover:text-dark-pink transition cursor-pointer' >Adoptar</li>
               </Link>
               <Link  to='/contact'>
-                <li className='hover:text-black transition cursor-pointer' >Acerca De</li>
+                <li className='hover:text-dark-pink transition cursor-pointer' >Acerca De</li>
               </Link>
               <Link  to='/'>
-                <li className='hover:text-black transition cursor-pointer' >Involúcrate</li>
+                <li className='hover:text-dark-pink transition cursor-pointer' >Involúcrate</li>
               </Link>
               <Link  to='/'>
                 <li className='hover:text-white transition duration-200 ease-in-out px-6 py-[0.5rem] rounded-3xl border-2 border-main-text-color hover:bg-main-text-color cursor-pointer' >Iniciar Sesión</li>

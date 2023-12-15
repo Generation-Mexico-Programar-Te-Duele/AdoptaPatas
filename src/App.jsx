@@ -11,6 +11,7 @@ import Home from './_search/pages/Home'
 import Footer from './components/layout/Footer'
 import { PetCards } from './_search/pages/Adopt/PetCards'
 import { Contact } from './_search/pages/Contact'
+import Donaciones from './components/layout/Donaciones'
 
 
 function App() {
@@ -22,9 +23,13 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
-          
           <Route path='/contact' element={<Contact/>} />
         </Route>
+
+        <Route element={<Donaciones />}>
+          <Route path='/Donaciones' element={<Donaciones />} />
+        </Route>
+        
 
         {/* Public Routes */}
         <Route element={<AuthLayout />}>

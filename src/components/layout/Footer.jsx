@@ -29,7 +29,7 @@ function Footer() {
             <Link className='text-[15px] md:text-[1rem] hover:text-hover-pink transition' href="">
               Centro de Información
             </Link>
-            <Link className='text-[15px] md:text-[1rem] hover:text-hover-pink transition' href="">
+            <Link className='text-[15px] md:text-[1rem] hover:text-hover-pink transition' to={"/Donaciones"}>
               Apoya este proyecto
             </Link>
             <Link className='text-[15px] md:text-[1rem] hover:text-hover-pink transition' href="">

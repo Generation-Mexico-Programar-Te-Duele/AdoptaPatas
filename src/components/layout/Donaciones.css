@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'OpenSans';
+    src: url('../../assets/fonts/OpenSans/OpenSauceSans-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Nunito-Bold';
+    src: url('../../assets/fonts/Nunito/Nunito-ExtraBold.ttf');
+}
+
+.bg-pink{
+background-color: #F2D0D2;
+}
+
+.titulo{
+    font-family: 'Nunito-Bold';
+    color: #000;
+}
+
+.texto{
+    font-family: 'OpenSans' !important;
+    color: #000;
+}
+
