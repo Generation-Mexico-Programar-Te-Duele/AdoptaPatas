@@ -10,6 +10,7 @@ import MainLayout from './_search/MainLayout'
 import Home from './_search/pages/Home'
 import Footer from './components/layout/Footer'
 import { PetCards } from './_search/pages/Adopt/PetCards'
+import Involucrate from './_social/pages/Involucrate'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route element={<AuthLayout/>}>
           <Route path='/sign-in' element={<SignInForm />} />
           <Route path='/sign-up' element={<SignUpForm />} />
+        <Route path='/involucrate' element={<Involucrate />} />
         </Route>
 
         {/* Private Routes */}
@@ -33,6 +35,7 @@ function App() {
         </Route>
 
         <Route path='/pet-card' element={<PetCards />} />
+
         
         
       </Routes>

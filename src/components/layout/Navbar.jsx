@@ -21,7 +21,7 @@ function Navbar() {
           <Link  to='/'>
             <li className='transition my-4 py-4 border-b hover:bg-dark-pink hover:rounded'>Acerca De</li>
           </Link>
-          <Link  to='/'>
+          <Link  to='/involucrate'>
             <li className='transition my-4 py-4 border-b hover:bg-dark-pink hover:rounded'>Involúcrate</li>
           </Link>
           <Link  to='/sign-in'>
