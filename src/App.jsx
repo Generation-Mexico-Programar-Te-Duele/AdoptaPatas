@@ -26,7 +26,6 @@ function App() {
         <Route element={<AuthLayout/>}>
           <Route path='/sign-in' element={<SignInForm />} />
           <Route path='/sign-up' element={<SignUpForm />} />
-        <Route path='/involucrate' element={<Involucrate />} />
         </Route>
 
         {/* Private Routes */}
@@ -36,6 +35,7 @@ function App() {
 
         <Route path='/pet-card' element={<PetCards />} />
 
+        <Route path='/involucrate' element={<Involucrate />} />
         
         
       </Routes>

@@ -52,7 +52,7 @@ function Navbar() {
               <Link  to='/contact'>
                 <li className='hover:text-black transition cursor-pointer' >Acerca De</li>
               </Link>
-              <Link  to='/'>
+              <Link  to='/involucrate'>
                 <li className='hover:text-black transition cursor-pointer' >Involúcrate</li>
               </Link>
               <Link  to='/sign-in'>
