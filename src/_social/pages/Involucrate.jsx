@@ -1,10 +1,11 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Involucrate(){
     return (
 
-        <main className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-2 mx-auto bg-main-bg-color">
+        <main className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-2 mx-auto bg-main-bg-color">
         <div className="col-span-3 my-auto text-main-text-color" >
             
             <h2 className="my-10 text-center text-[4rem]" id="place-sighnUp">Involúcrate y adopta mascotas</h2>
@@ -48,19 +49,20 @@ function Involucrate(){
                         />
                         </div>
                     </div>
-                        {/* <link
-                         href="/sign-up"
+                        <Link
+                         to="/sign-up"
                         className="block text-center text-lg my-5 text-buttonColor"
-                        /> Regístrate */}
+                        > Regístrate 
+                            </Link>
 
                         {/* Link a Regístrate */}
                     
-                    <button
+                    {/* <button
                         id="buttonContact"
                         class="cursor-pointer mx-auto text-center py-1 px-2 mb-1 text-[2rem] flex justify-center align-middle w-full"
                     >
                         Regístrate
-                    </button>
+                    </button> */}
 
         </div>
         </main>
