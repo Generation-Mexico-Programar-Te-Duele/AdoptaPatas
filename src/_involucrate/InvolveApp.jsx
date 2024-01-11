@@ -3,7 +3,7 @@ import "./InvolveApp.css";
 import TextApp from "./Components/TextApp";
 import ImgApp from "./Components/ImgApp";
 import ButtonApp from "../_contact/components/ButtonApp";
-import {Routes, Route, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 const InvolveApp = () => {
 
