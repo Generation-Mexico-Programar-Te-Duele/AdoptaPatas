@@ -10,6 +10,7 @@ import MainLayout from './_search/MainLayout'
 import Home from './_search/pages/Home'
 import Footer from './components/layout/Footer'
 import Contact from './_contact/Contact'
+import InvolveApp from './_involucrate/InvolveApp'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path='/sign-in' element={<SignInForm />} />
           <Route path='/sign-up' element={<SignUpForm />} />
           <Route path='/contact' element={<Contact/>} />
+          <Route path='/involucrate' element={<InvolveApp />} />
         </Route>
 
         {/* Private Routes */}
