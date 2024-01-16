@@ -129,7 +129,7 @@ function Search() {
 
       {/*Top Bar*/}
 
-      <div className="w-[80%] bg-secondary-bg-color rounded-2xl p-10 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+      <div className="w-[80%] bg-secondary-bg-color rounded-2xl p-10">
         <div className="w-[100%] flex flex-col items-center gap-5">
           <h3 className="text-main-text-color font-['Open_Sans_Bold'] text-[2rem]">Resultados para: {`${type === 'dog' ? 'Perro' : 'Gato'}`}</h3>
           <div className=" w-[90%] flex flex-col lg:flex-row gap-10 justify-center items-center">
@@ -159,7 +159,7 @@ function Search() {
       {/*Left side bar*/}
       <section class=" grid md:grid-cols-12 p-4 m-2 w-[100%] ">
         <div className='md:col-span-3 justify-self-center md:pt-0 p-2'>
-          <div className='left flex flex-col justify-around w-[17.5rem] rounded-lg bg-secondary-bg-color shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transition-all ease-in-out px-4 py-4'>
+          <div className='left flex flex-col justify-around w-[17.5rem] rounded-lg bg-secondary-bg-color shadow-xl transition-all ease-in-out px-4 py-4'>
             {/* <div className='py-[1rem] border-solid border-b-gray-500 border-b-[1px]'>
               <h4 className='font-["Open_Sans_Semi"] text-[1.15rem] text-main-text-color py-[0.5rem]'>Distancia</h4>
               <SelectBar selected="20 km o menos" label="Distancia" options={options} />
@@ -193,10 +193,12 @@ function Search() {
                 <Checkbox htmlFor={"10"} id={"10"} value={10} text="Gigante" />
               </div>
             </div>
-            <button
-              ref={buttonRef}
-              onClick={handleApplyFilters}
-              className='w-[10rem] h-[3rem] hover:text-main-text-color transition duration-200 ease-in-out cursor-pointer bg-main-text-color px-7 py-[0.5rem] text-white text-[0.95rem] rounded-3xl hover:bg-[#3f3f3] font-["Open_Sans_Medium"]'>Aplicar Filtros</button>
+            <div className='flex flex-col justify-center items-center pb-4'>
+              <button
+                ref={buttonRef}
+                onClick={handleApplyFilters}
+                className='w-[10rem] h-[3rem] hover:text-main-text-color transition duration-200 ease-in-out cursor-pointer bg-main-text-color px-7 py-[0.5rem] text-white text-[0.95rem] rounded-3xl hover:bg-white font-["Open_Sans_Medium"]'>Aplicar Filtros</button>
+            </div>
           </div>
         </div>
 
