@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route, Outlet } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import HomeFeed from './_social/pages/HomeFeed'
 import SignInForm from './_auth/forms/SignInForm/SignInForm'
 import SignUpForm from './_auth/forms/SignUpForm/SignUpForm'
@@ -20,6 +20,11 @@ import Donaciones from './_search/pages/Donaciones/Donaciones'
 import InvolveApp from './_search/pages/Involucrate/InvolveApp'
 import Search from './_search/pages/Search'
 import PetDetails from './components/pets/PetDetails'
+import NewsFeedLayout from './_social/NewsFeedLayout'
+import CreatePost from './_social/pages/CreatePost'
+import UserProfile from './_social/pages/UserProfile'
+import FollowersPage from './_social/pages/FollowersPage'
+import PostDetails from './_social/pages/PostDetails'
 
 
 
@@ -56,10 +61,13 @@ function App() {
           <Route path='/porfile' element={<Porfile />} />
         </Route>
         {/* Private Routes */}
-        <Route element={<RootLayout />}>
-          <Route path='/social' element={<HomeFeed />} />
+        <Route element={<NewsFeedLayout />}>
+          <Route path='/social/home' element={isLogin.length > 0 ? <HomeFeed /> : <SignInForm setIsLogin={setIsLogin} />} />
+          <Route path='/social/create_post' element={<CreatePost />} />
+          <Route path='/social/profile/:id/*' element={<UserProfile />} />
+          <Route path='/social/followers' element={<FollowersPage />} />
+          <Route path='/social/posts/:id' element={<PostDetails />} />
         </Route>
-        <Route path='/pet-card' element={<PetCards />} />
       </Routes>
       <Footer />
     </UserProvider>
