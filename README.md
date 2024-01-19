@@ -19,7 +19,7 @@ Las nuevas noticias y/o publicaciones se muestran dentro del inicio, lo cuál pe
 
 🐕‍🦺 Instalación
 1. Clona este repositorio en tu máquina local:
-  ``` git clone https://github.com/Generation-Mexico-Programar-Te-Duele/AdoptaPatas.git
+  git clone https://github.com/Generation-Mexico-Programar-Te-Duele/AdoptaPatas.git
 2. Instala las dependencias:
   npm install
 3. Inicia la aplicación:
