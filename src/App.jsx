@@ -13,7 +13,6 @@ import { useState } from 'react'
 import { Navbar2 } from './components/layout/Navbar2'
 import { useEffect } from 'react'
 import { AboutUs } from './_search/pages/AboutUs/AboutUs'
-import { UserProvider } from './_auth/context/userProvider'
 import Contact from './_contact/Contact'
 import Donaciones from './_search/pages/Donaciones/Donaciones'
 import InvolveApp from './_search/pages/Involucrate/InvolveApp'
@@ -23,6 +22,7 @@ import { NewsFeed } from './_social/pages/NewsFeed/NewsFeed'
 import { PostDetails } from './_social/pages/NewsFeed/PostDetails'
 import { Profile } from './_search/pages/Profile/Profile'
 import { Profiles } from './_search/pages/Profile/Porfiles'
+import { UserProvider } from './_auth/context/UserProvider'
 
 
 

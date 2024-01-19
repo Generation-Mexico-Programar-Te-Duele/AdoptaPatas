@@ -40,6 +40,8 @@ function SignUpForm() {
   const [isValidPostalCode, setIsValidPostalCode] = useState(true); */
   const [place, setPlace] = useState('');
   const [isValidPlace, setIsValidPlace] = useState(true);
+  const [state, setState] = useState('');
+  const [isValidState, setIsValidState] = useState(true);
   const [role, setRole] = useState();
   const [isValidRole, setIsValidRole] = useState(true);
   const [isValidUser, setIsValidUser] = useState(false);
@@ -100,7 +102,7 @@ function SignUpForm() {
         }
       }
       setUserName(userNameValue);
-      console.log("%cRespuesta Existosa",'color: green; font-weight: bold;',"handleUserNameChange called");
+      console.log("%cRespuesta Existosa", 'color: green; font-weight: bold;', "handleUserNameChange called");
     } catch (error) {
       console.log(error);
     }
@@ -126,7 +128,7 @@ function SignUpForm() {
         }
       }
       setEmail(userEmail);
-      console.log("%cRespuesta Existosa",'color: green; font-weight: bold;',"handleEmailChange called");
+      console.log("%cRespuesta Existosa", 'color: green; font-weight: bold;', "handleEmailChange called");
     } catch (error) {
       console.log(error);
     }
@@ -198,6 +200,17 @@ function SignUpForm() {
       console.log("handlePlaceChange called");
     }
   };
+  const handleStateChange = (e) => {
+    const userState = e.target.value;
+    console.log(userState);
+    if (userState == '') {
+      setIsValidState(false);
+    } else {
+      setIsValidState(true);
+      setState(userState);
+      console.log("handleStateChange called");
+    }
+  };
   const handleRoleChange = (e) => {
     const role = e.target.value;
     console.log(role);
@@ -229,11 +242,12 @@ function SignUpForm() {
       isValidAge &&
       isValidPhoneNumber &&
       isValidPlace &&
+      isValidState &&
       isValidRole &&
       !existUser && !existEmail
     ) {
       try {
-        await RegisterUser(name, lastName, userName, email, password, age, phoneNumber, place, role);
+        await RegisterUser(name, lastName, userName, email, password, age, phoneNumber, place, state, role);
         setIsValidUser(true);
         alert("Registro exitoso");
         // Redirige al usuario a la página de inicio de sesión
@@ -405,10 +419,33 @@ function SignUpForm() {
               sx={{ marginBottom: '1%' }}
 
             />
-            <Container disableGutters >
+            <div className='mx-auto '>
+              <select id="userType"
+                className='border-b border-buttonColor bg-main-bg-color text-black text-[1.3rem] placeholder-main-text-color mx-auto my-4 min-w-[100%]'
+                placeholder='Tipo de Cuenta'
+                required
+                onChange={handleRoleChange}
+                >
+                <option value="" disabled selected hidden>Selecciona el Tipo de Cuenta</option>
+                <option value="Individual">Individual</option>
+                <option value="Shelter">Shelter</option>
+              </select>
+            </div>
+            <Container disableGutters className='my-4' >
               <Grid container >
                 <Grid item xs={12} sm={6} sx={{ display: 'flex', justifyContent: 'center' }} >
-                  <Autocomplete
+                  <input
+                    list="branch"
+                    className='border-b border-buttonColor bg-main-bg-color text-black text-[1.3rem] placeholder-main-text-color'
+                    placeholder='Seleccionar Ciudad'
+                    required
+                    onChange={handlePlaceChange} />
+                  <datalist id="branch" >
+                    {placeMx.map((ciudad, index) => (
+                      <option key={index} value={ciudad}>{ciudad}</option>
+                    ))}
+                  </datalist>
+                  {/* <Autocomplete
                     options={placeMx}
                     id="flat-demo"
                     sx={{ width: '98%' }}
@@ -423,10 +460,23 @@ function SignUpForm() {
                         helperText={isValidPlace ? '' : 'Selecciona un Estado'}
                       />
                     )}
-                  />
+                  /> */}
                 </Grid>
                 <Grid item xs={12} sm={6} sx={{ display: 'flex', justifyContent: 'center' }}>
-                  <Autocomplete
+                  <>
+                    <input
+                      list="state"
+                      className='border-b border-buttonColor bg-main-bg-color text-black text-[1.3rem] placeholder-main-text-color'
+                      placeholder='Seleccionar Estado'
+                      required
+                      onChange={handleStateChange} />
+                    <datalist id="state" >
+                      {estadosMexico.map((ciudad, index) => (
+                        <option key={index} value={ciudad}>{ciudad}</option>
+                      ))}
+                    </datalist>
+                  </>
+                  {/* <Autocomplete
                     id="flat-demo"
                     options={usersType}
                     sx={{ width: '98%' }}
@@ -441,11 +491,10 @@ function SignUpForm() {
                         helperText={isValidRole ? '' : 'Selecciona que tipo de cuenta es'}
                       />
                     )}
-                  />
+                  /> */}
                 </Grid>
               </Grid>
             </Container>
-
             <div className="w-[50%] mx-auto mt-10 border-2 rounded-[50px] border-buttonColor bg-buttonColor hover:bg-main-text-color  text-white ">
               <button
                 id="buttonContact"
@@ -508,35 +557,69 @@ function SignUpForm() {
 }
 
 const placeMx = [
-  { label: 'Ciudad de México' },
-  { label: 'Guadalajara' },
-  { label: 'Monterrey' },
-  { label: 'Puebla' },
-  { label: 'Tijuana' },
-  { label: 'Ciudad Juárez' },
-  { label: 'León' },
-  { label: 'Zapopan' },
-  { label: 'Monclova' },
-  { label: 'Cancún' },
-  { label: 'Mérida' },
-  { label: 'Acapulco' },
-  { label: 'Querétaro' },
-  { label: 'Toluca' },
-  { label: 'Morelia' },
-  { label: 'Tuxtla Gutiérrez' },
-  { label: 'Culiacán' },
-  { label: 'Hermosillo' },
-  { label: 'Chihuahua' },
-  { label: 'Oaxaca' },
-  { label: 'Aguascalientes' },
-  { label: 'Cuernavaca' },
-  { label: 'Tampico' },
-  { label: 'Veracruz' },
-  { label: 'Campeche' },
-  { label: 'Mazatlán' },
-  { label: 'Xalapa' },
-  { label: 'La Paz' },
-  { label: 'Saltillo' },
+  'Ciudad de México',
+  'Guadalajara',
+  'Monterrey',
+  'Puebla',
+  'Tijuana',
+  'Ciudad Juárez',
+  'León',
+  'Zapopan',
+  'Monclova',
+  'Cancún',
+  'Mérida',
+  'Acapulco',
+  'Querétaro',
+  'Toluca',
+  'Morelia',
+  'Tuxtla Gutiérrez',
+  'Culiacán',
+  'Hermosillo',
+  'Chihuahua',
+  'Oaxaca',
+  'Aguascalientes',
+  'Cuernavaca',
+  'Tampico',
+  'Veracruz',
+  'Campeche',
+  'Mazatlán',
+  'Xalapa',
+  'La Paz',
+  'Saltillo',
+];
+
+const estadosMexico = [
+  "Aguascalientes",
+  "Baja California",
+  "Baja California Sur",
+  "Campeche",
+  "Chiapas",
+  "Chihuahua",
+  "Coahuila",
+  "Colima",
+  "Durango",
+  "Guanajuato",
+  "Guerrero",
+  "Hidalgo",
+  "Jalisco",
+  "Estado de México",
+  "Michoacán",
+  "Morelos",
+  "Nayarit",
+  "Nuevo León",
+  "Oaxaca",
+  "Puebla",
+  "Querétaro",
+  "Quintana Roo",
+  "San Luis Potosí",
+  "Sinaloa",
+  "Sonora",
+  "Tabasco",
+  "Tamaulipas",
+  "Tlaxcala",
+  "Veracruz",
+  "Yucatán",
+  "Zacatecas"
 ];
 
 const usersType = [
