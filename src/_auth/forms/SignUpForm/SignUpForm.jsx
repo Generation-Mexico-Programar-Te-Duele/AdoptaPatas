@@ -7,20 +7,17 @@ import { useState } from 'react';
 import '../SignUpForm/SignUp.css'
 import { colors } from '../../../assets/MUI/Colors';
 import { TextFieldStyle } from '../TextFieldStyles';
-import { RegisterPost } from './RegisterPost';
+import { RegisterUser } from './RegisterUser.js';
+import axios from 'axios';
 
 
 function SignUpForm() {
+
   const navigate = useNavigate(); //Inicio el historial
 
   //Use state para ver u ocultar la contraseña
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  //Objeto de las opciones de lugares de México
-  const flatProps = {
-    options: placeMx.map((option) => option.place),
-  };
 
   // valores y validaciones de los inputs
   const [name, setName] = useState(''); // Valor
@@ -39,20 +36,28 @@ function SignUpForm() {
   const [isValidAge, setIsValidAge] = useState(true);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true);
-  const [postalCode, setPostalCode] = useState('');
-  const [isValidPostalCode, setIsValidPostalCode] = useState(true);
+  /* const [postalCode, setPostalCode] = useState('');
+  const [isValidPostalCode, setIsValidPostalCode] = useState(true); */
   const [place, setPlace] = useState('');
   const [isValidPlace, setIsValidPlace] = useState(true);
+  const [state, setState] = useState('');
+  const [isValidState, setIsValidState] = useState(true);
+  const [role, setRole] = useState();
+  const [isValidRole, setIsValidRole] = useState(true);
+  const [isValidUser, setIsValidUser] = useState(false);
 
   //Validacion si ya existe un usuario y correo electronico
   const [existUser, setExistUser] = useState(false);
   const [existEmail, setExistEmail] = useState(false);
-  
+
+  //Error
+  const [error, setError] = useState('');
+
 
   //Funciones para obtener el valor del input de cada campo
   const handleNameChange = (e) => {
     const nameValue = e.target.value;
-    console.log(nameValue);
+    //console.log(nameValue);
     const regeName = /^[A-Za-z\s]+$/;
     if (nameValue.length < 3 || nameValue.length > 50 || !nameValue.match(regeName)) {
       setIsValidName(false);
@@ -64,7 +69,7 @@ function SignUpForm() {
   };
   const handleLastNameChange = (e) => {
     const lastNameValue = e.target.value;
-    console.log(lastNameValue);
+    //console.log(lastNameValue);
     const regeName = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ\s]+$/;
     if (lastNameValue.length < 4 || lastNameValue.length > 50 || !lastNameValue.match(regeName)) {
       setIsValidLastName(false);
@@ -75,50 +80,63 @@ function SignUpForm() {
     console.log("handleLastNameChange called");
 
   };
-  const handleUserNameChange = (e) => {
-    const userNameValue = e.target.value;
-    console.log(userNameValue);
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const existUser = users.find(u => (u.userName === userNameValue));
-    const regeName = /^[a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)*$/;
-    if (userNameValue.length < 2 || userNameValue.length > 50 || !userNameValue.match(regeName)) {
-      setIsValidUserName(false);
-    } else {
-      if(existUser){
-        setExistUser(true);
-      }else{
-        setExistUser(false);
-        setIsValidUserName(true);
-      }
-    }
-    setUserName(userNameValue);
-    console.log("handleUserNameChange called");
+  const handleUserNameChange = async (e) => {
 
+    try {
+      const userNameValue = e.target.value;
+      //console.log(userNameValue);
+      const response = await axios.get("http://localhost:8080/adoptapatas/v2/users");
+      const users = response.data
+      console.log(userNameValue);
+      //const users = JSON.parse(localStorage.getItem('users')) || [];
+      const existUser = users.find(u => (u.username === userNameValue));
+      const regeName = /^[a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)*$/;
+      if (userNameValue.length < 3 || userNameValue.length > 50 || !userNameValue.match(regeName)) {
+        setIsValidUserName(false);
+      } else {
+        if (existUser) {
+          setExistUser(true);
+        } else {
+          setExistUser(false);
+          setIsValidUserName(true);
+        }
+      }
+      setUserName(userNameValue);
+      console.log("%cRespuesta Existosa", 'color: green; font-weight: bold;', "handleUserNameChange called");
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const handleEmailChange = (e) => {
-    const userEmail = e.target.value;
-    console.log(userEmail);
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const existEmail = users.find(u => (u.email === userEmail));
-    const regeName = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (userEmail.length < 1 || userEmail.length > 50 || !userEmail.match(regeName)) {
-      setIsValidEmail(false);
-    } else {
-      if (existEmail) {
-        setExistEmail(true);
-      }else{
-        setExistEmail(false)
-        setIsValidEmail(true);
+  const handleEmailChange = async (e) => {
+    try {
+      const userEmail = e.target.value;
+      //console.log(userEmail);
+      const response = await axios.get("http://localhost:8080/adoptapatas/v2/users");
+      const users = response.data
+      console.log("GET Axios", users.data);
+      //const users = JSON.parse(localStorage.getItem('users')) || [];
+      const existEmail = users.find(u => (u.email === userEmail));
+      const regeName = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (userEmail.length < 1 || userEmail.length > 50 || !userEmail.match(regeName)) {
+        setIsValidEmail(false);
+      } else {
+        if (existEmail) {
+          setExistEmail(true);
+        } else {
+          setExistEmail(false)
+          setIsValidEmail(true);
+        }
       }
+      setEmail(userEmail);
+      console.log("%cRespuesta Existosa", 'color: green; font-weight: bold;', "handleEmailChange called");
+    } catch (error) {
+      console.log(error);
     }
-    setEmail(userEmail);
-    console.log("handleEmailChange called");
-
   };
   const handlePasswordChange = (e) => {
     const userPassword = e.target.value;
-    console.log(userPassword);
-    const regeName = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+    //console.log(userPassword);
+    const regeName = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (userPassword.length < 8 || userPassword.length > 50 || !userPassword.match(regeName)) {
       setIsValidPassword(false);
     } else {
@@ -129,7 +147,7 @@ function SignUpForm() {
   };
   const handleConfirmPasswordChange = (e) => {
     const userConfirmPassword = e.target.value;
-    console.log(userConfirmPassword);
+    //console.log(userConfirmPassword);
     if (userConfirmPassword != password) {
       setIsValidConfirmPassword(false);
     } else {
@@ -140,7 +158,7 @@ function SignUpForm() {
   };
   const handleAgeChange = (e) => {
     const userAge = e.target.value;
-    console.log(userAge);
+    //console.log(userAge);
     if (userAge < 18 || userAge > 125) {
       setIsValidAge(false);
     } else {
@@ -151,7 +169,7 @@ function SignUpForm() {
   };
   const handleNumberChange = (e) => {
     const userPhoneNumber = e.target.value;
-    console.log(userPhoneNumber);
+    //console.log(userPhoneNumber);
     if (userPhoneNumber.length < 10 || userPhoneNumber.length > 12) {
       setIsValidPhoneNumber(false);
     } else {
@@ -160,7 +178,7 @@ function SignUpForm() {
     setPhoneNumber(userPhoneNumber);
     console.log("handlePhoneNumberChange called");
   };
-  const handlePostalCodeChange = (e) => {
+  /* const handlePostalCodeChange = (e) => {
     const userPostalCode = e.target.value;
     console.log(userPostalCode);
     if (userPostalCode.length < 5 || userPostalCode.length > 10) {
@@ -170,7 +188,7 @@ function SignUpForm() {
     }
     setPostalCode(userPostalCode);
     console.log("handlePostalCodeChange called");
-  };
+  }; */
   const handlePlaceChange = (e) => {
     const userPlace = e.target.value;
     console.log(userPlace);
@@ -178,13 +196,40 @@ function SignUpForm() {
       setIsValidPlace(false);
     } else {
       setIsValidPlace(true);
+      setPlace(userPlace);
+      console.log("handlePlaceChange called");
     }
-    setPlace(userPlace);
-    console.log("handlePlaceChange called");
+  };
+  const handleStateChange = (e) => {
+    const userState = e.target.value;
+    console.log(userState);
+    if (userState == '') {
+      setIsValidState(false);
+    } else {
+      setIsValidState(true);
+      setState(userState);
+      console.log("handleStateChange called");
+    }
+  };
+  const handleRoleChange = (e) => {
+    const role = e.target.value;
+    console.log(role);
+    if (role == 'Individual') {
+      setIsValidRole(true);
+      setRole(1);
+      console.log("handleRole called");
+    } else if (role == 'Shelter') {
+      setIsValidRole(true);
+      setRole(2);
+      console.log("handleRole called");
+    } else {
+      setIsValidRole(false);
+    }
+
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Verifica si todos los campos son válidos antes de proceder
     if (
@@ -196,19 +241,29 @@ function SignUpForm() {
       isValidConfirmPassword &&
       isValidAge &&
       isValidPhoneNumber &&
-      isValidPostalCode &&
       isValidPlace &&
+      isValidState &&
+      isValidRole &&
       !existUser && !existEmail
     ) {
-      RegisterPost(name, lastName, userName, email, password, age, phoneNumber, place, postalCode);
-      // Redirige al usuario a la página de inicio de sesión
-      navigate('/sign-in');
-      
+      try {
+        await RegisterUser(name, lastName, userName, email, password, age, phoneNumber, place, state, role);
+        setIsValidUser(true);
+        alert("Registro exitoso");
+        // Redirige al usuario a la página de inicio de sesión
+        navigate('/sign-in');
+      } catch (error) {
+        console.error('Error en la solicitud', error);
+        setError('Error en la solicitud');
+      }
+
     } else {
+      setIsValidUser(false);
+      setError('Error en el formulario, verifica los datos');
       console.log('Error en el formulario, verifica los datos');
     }
   };
-  
+
   return (
     <>
       <main className="main-auth grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-5  gap-2 mx-auto bg-main-bg-color ">
@@ -223,6 +278,7 @@ function SignUpForm() {
         {/* Formulario */}
         <div className=" col-span-3 my-auto text-main-text-color ">
           <h2 className="my-10 text-center text-[4rem]" id='place-signUp'>¡Únete y Adopta!</h2>
+          {!isValidUser ? <p className='text-center text-[2rem] mb-10' style={{ color: 'red' }}>{error}</p> : ''}
           <form className='mx-auto max-w-[85%]' onSubmit={handleSubmit} >
             <TextFieldStyle
               id="name"
@@ -258,7 +314,7 @@ function SignUpForm() {
               required
               fullWidth
               error={!isValidUserName || existUser}
-              helperText={isValidUserName ? (existUser? 'El usuaro ya existe, pruebe con otro' : '') : 'Nombre de Usuario Invalido'}
+              helperText={isValidUserName ? (existUser ? 'El usuaro ya existe, pruebe con otro' : '') : 'Nombre de Usuario Invalido'}
               onChange={handleUserNameChange}
               sx={{ marginBottom: '1%' }}
             />
@@ -271,7 +327,7 @@ function SignUpForm() {
               required
               fullWidth
               error={!isValidEmail || existEmail}
-              helperText={isValidEmail ? (existEmail? 'El correo ya esta en uso, pruebe con otro' : '') : 'Email Invalido'}
+              helperText={isValidEmail ? (existEmail ? 'El correo ya esta en uso, pruebe con otro' : '') : 'Email Invalido'}
               onChange={handleEmailChange}
               sx={{ marginBottom: '1%' }}
             />
@@ -363,11 +419,34 @@ function SignUpForm() {
               sx={{ marginBottom: '1%' }}
 
             />
-            <Container disableGutters >
+            <div className='mx-auto '>
+              <select id="userType"
+                className='border-b border-buttonColor bg-main-bg-color text-black text-[1.3rem] placeholder-main-text-color mx-auto my-4 min-w-[100%]'
+                placeholder='Tipo de Cuenta'
+                required
+                onChange={handleRoleChange}
+                >
+                <option value="" disabled selected hidden>Selecciona el Tipo de Cuenta</option>
+                <option value="Individual">Individual</option>
+                <option value="Shelter">Shelter</option>
+              </select>
+            </div>
+            <Container disableGutters className='my-4' >
               <Grid container >
                 <Grid item xs={12} sm={6} sx={{ display: 'flex', justifyContent: 'center' }} >
-                  <Autocomplete
-                    {...flatProps}
+                  <input
+                    list="branch"
+                    className='border-b border-buttonColor bg-main-bg-color text-black text-[1.3rem] placeholder-main-text-color'
+                    placeholder='Seleccionar Ciudad'
+                    required
+                    onChange={handlePlaceChange} />
+                  <datalist id="branch" >
+                    {placeMx.map((ciudad, index) => (
+                      <option key={index} value={ciudad}>{ciudad}</option>
+                    ))}
+                  </datalist>
+                  {/* <Autocomplete
+                    options={placeMx}
                     id="flat-demo"
                     sx={{ width: '98%' }}
                     renderInput={(params) => (
@@ -381,42 +460,61 @@ function SignUpForm() {
                         helperText={isValidPlace ? '' : 'Selecciona un Estado'}
                       />
                     )}
-                  />
+                  /> */}
                 </Grid>
                 <Grid item xs={12} sm={6} sx={{ display: 'flex', justifyContent: 'center' }}>
-                  <TextFieldStyle
-                    type='Number'
-                    id="postalCode"
-                    label="Código  Postal"
-                    variant="standard"
-                    value={postalCode}
-                    required
-                    error={!isValidPostalCode}
-                    helperText={isValidPostalCode ? '' : 'Entre 5 y 10 digitos'}
-                    onChange={handlePostalCodeChange}
-                    sx={{ width: '98%', marginBottom: '1%' }}
-                  />
+                  <>
+                    <input
+                      list="state"
+                      className='border-b border-buttonColor bg-main-bg-color text-black text-[1.3rem] placeholder-main-text-color'
+                      placeholder='Seleccionar Estado'
+                      required
+                      onChange={handleStateChange} />
+                    <datalist id="state" >
+                      {estadosMexico.map((ciudad, index) => (
+                        <option key={index} value={ciudad}>{ciudad}</option>
+                      ))}
+                    </datalist>
+                  </>
+                  {/* <Autocomplete
+                    id="flat-demo"
+                    options={usersType}
+                    sx={{ width: '98%' }}
+                    renderInput={(params) => (
+                      <TextFieldStyle
+                        {...params}
+                        label="Tipo de cuenta"
+                        variant="standard"
+                        value={role}
+                        error={!isValidRole}
+                        onChange={handleRoleChange}
+                        helperText={isValidRole ? '' : 'Selecciona que tipo de cuenta es'}
+                      />
+                    )}
+                  /> */}
                 </Grid>
               </Grid>
             </Container>
             <div className="w-[50%] mx-auto mt-10 border-2 rounded-[50px] border-buttonColor bg-buttonColor hover:bg-main-text-color  text-white ">
               <button
                 id="buttonContact"
-
                 className="cursor-pointer mx-auto text-center py-1 px-2 mb-1 text-[1.3rem] flex justify-center align-middle w-full"
               >
                 Regístrate
               </button>
             </div>
+
           </form>
 
           <p className="text-center text-[1.2rem] my-4">¿Ya tienes cuenta?</p>
-          <Link
-            className="text-center text-[1.2rem] flex justify-center my-4 text-buttonColor"
-            to="/sign-in"
-          >
-            Inicia Sesion
-          </Link>
+          <div className=' flex justify-center align-middle text-center'>
+            <Link
+              className="text-[1.2rem] flex justify-center align-middle my-4 text-buttonColor"
+              to="/sign-in"
+            >
+              Inicia Sesion
+            </Link>
+          </div>
           {/* <div className="flex flex-wrap  mb-0">
               <div className="flex-1 px-4 flex justify-center items-center">
                 <a className="flex justify-center items-center" href="https://www.facebook.com/">
@@ -459,35 +557,75 @@ function SignUpForm() {
 }
 
 const placeMx = [
-  { place: 'Ciudad de México' },
-  { place: 'Guadalajara' },
-  { place: 'Monterrey' },
-  { place: 'Puebla' },
-  { place: 'Tijuana' },
-  { place: 'Ciudad Juárez' },
-  { place: 'León' },
-  { place: 'Zapopan' },
-  { place: 'Monclova' },
-  { place: 'Cancún' },
-  { place: 'Mérida' },
-  { place: 'Acapulco' },
-  { place: 'Querétaro' },
-  { place: 'Toluca' },
-  { place: 'Morelia' },
-  { place: 'Tuxtla Gutiérrez' },
-  { place: 'Culiacán' },
-  { place: 'Hermosillo' },
-  { place: 'Chihuahua' },
-  { place: 'Oaxaca' },
-  { place: 'Aguascalientes' },
-  { place: 'Cuernavaca' },
-  { place: 'Tampico' },
-  { place: 'Veracruz' },
-  { place: 'Campeche' },
-  { place: 'Mazatlán' },
-  { place: 'Xalapa' },
-  { place: 'La Paz' },
-  { place: 'Saltillo' },
+  'Ciudad de México',
+  'Guadalajara',
+  'Monterrey',
+  'Puebla',
+  'Tijuana',
+  'Ciudad Juárez',
+  'León',
+  'Zapopan',
+  'Monclova',
+  'Cancún',
+  'Mérida',
+  'Acapulco',
+  'Querétaro',
+  'Toluca',
+  'Morelia',
+  'Tuxtla Gutiérrez',
+  'Culiacán',
+  'Hermosillo',
+  'Chihuahua',
+  'Oaxaca',
+  'Aguascalientes',
+  'Cuernavaca',
+  'Tampico',
+  'Veracruz',
+  'Campeche',
+  'Mazatlán',
+  'Xalapa',
+  'La Paz',
+  'Saltillo',
 ];
+
+const estadosMexico = [
+  "Aguascalientes",
+  "Baja California",
+  "Baja California Sur",
+  "Campeche",
+  "Chiapas",
+  "Chihuahua",
+  "Coahuila",
+  "Colima",
+  "Durango",
+  "Guanajuato",
+  "Guerrero",
+  "Hidalgo",
+  "Jalisco",
+  "Estado de México",
+  "Michoacán",
+  "Morelos",
+  "Nayarit",
+  "Nuevo León",
+  "Oaxaca",
+  "Puebla",
+  "Querétaro",
+  "Quintana Roo",
+  "San Luis Potosí",
+  "Sinaloa",
+  "Sonora",
+  "Tabasco",
+  "Tamaulipas",
+  "Tlaxcala",
+  "Veracruz",
+  "Yucatán",
+  "Zacatecas"
+];
+
+const usersType = [
+  { label: 'Individual' },
+  { label: 'Shelter' },
+];
+
 
 export default SignUpForm;
