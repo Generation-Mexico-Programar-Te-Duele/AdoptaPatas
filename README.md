@@ -23,11 +23,12 @@ Las nuevas noticias y/o publicaciones se muestran dentro del inicio, lo cuál pe
 git clone https://github.com/Generation-Mexico-Programar-Te-Duele/AdoptaPatas.git
 ```
 3. Instala las dependencias:
-  ```
+```
 npm install
 ```
 4. Inicia la aplicación:
-```  npm run dev
+```
+npm run dev
 ```
 
 ## Equipo "Programar Te Duele" 🦮 
@@ -38,9 +39,8 @@ npm install
 - Monserrat Silva:  [@monserratsilva](https://github.com/monserratsilva)
 - Rogelio Lopez:  [@RogelioLR](https://github.com/RogelioLR)
 
-
-  ##Licencia
-  Este proyecto está bajo la Licencia @MIT.
+##Licencia
+  Este proyecto está bajo [Licencia MIT](https://opensource.org/licenses/MIT).
 
   ¡Gracias por contribuir a AdoptaPatas!
   
