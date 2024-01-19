@@ -13,8 +13,8 @@ import { PetCards } from './_search/pages/Adopt/PetCards'
 import { useState, useEffect } from 'react'
 import { Navbar2 } from './components/layout/Navbar2'
 import { AboutUs } from './_search/pages/AboutUs/AboutUs'
-import { UserProvider } from './_auth/context/userProvider'
-import { Porfile } from './_search/pages/Porfile'
+import { UserProvider } from './_auth/context/UserProvider'
+import { Profile } from './_search/pages/Profile/Porfile'
 import Contact from './_contact/Contact'
 import Donaciones from './_search/pages/Donaciones/Donaciones'
 import Search from './_search/pages/Search'
@@ -24,8 +24,6 @@ import CreatePost from './_social/pages/CreatePost'
 import UserProfile from './_social/pages/UserProfile'
 import FollowersPage from './_social/pages/FollowersPage'
 import PostDetails from './_social/pages/PostDetails'
-
-
 import InvolveApp from './_involucrate/InvolveApp'
 import Solicitud from './_solicitud/Solicitud'
 import FormSolicitud from './_solicitud/FormSolicitud'
@@ -59,7 +57,7 @@ function App() {
           <Route path='/sign-up' element={<SignUpForm />} />
           <Route path='/involucrate' element={<InvolveApp isLogin={isLogin} />} />
           <Route path='/donation' element={<Donaciones />} />
-          <Route path='/profile' element={<Porfile />} />
+          <Route path='/profile' element={<Profile />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/solicitud' element={<Solicitud />} />
           <Route path='/formSolicitud' element={<FormSolicitud />} />
