@@ -16,7 +16,7 @@ const InvolveApp = () => {
   return (
     <main className="bg-main-bg-color ">
         <HeaderApp
-            txt="Involucrate y Adopta Una Mascota"
+            txt="Involúcrate y Adopta Una Mascota"
         />
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 gap-2 mx-auto mb-5">
             <div className="col-span-3 ml-5 me-5">
@@ -27,7 +27,7 @@ const InvolveApp = () => {
             </div>
         </div>
         <ButtonApp 
-            title="Registrate"
+            title="Regístrate"
             id="buttonRegister"
             type="button"
             onClick={toRegisterPage}

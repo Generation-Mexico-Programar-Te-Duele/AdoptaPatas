@@ -11,6 +11,8 @@ import Home from './_search/pages/Home'
 import Footer from './components/layout/Footer'
 import Contact from './_contact/Contact'
 import InvolveApp from './_involucrate/InvolveApp'
+import Solicitud from './_solicitud/Solicitud'
+import FormSolicitud from './_solicitud/FormSolicitud'
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
           <Route path='/sign-up' element={<SignUpForm />} />
           <Route path='/contact' element={<Contact/>} />
           <Route path='/involucrate' element={<InvolveApp />} />
+          <Route path='/solicitud' element={<Solicitud />} />
+          <Route path='/formSolicitud' element={<FormSolicitud />} />
         </Route>
 
         {/* Private Routes */}
