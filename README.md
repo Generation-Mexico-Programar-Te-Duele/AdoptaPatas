@@ -4,7 +4,7 @@
 
 ## Este repositorio es el frontend de la red social AdoptaPatas, un proyecto desarrollado por el equipo "Programar Te Duele" de la Cohorte 34 de Generation México. AdoptaPatas tiene como objetivo facilitar el apoyo de procesos de adopción responsables y accesibles, en donde los usuarios podrán crear su propio perfil, buscar mascotas que se encuentren disponibles para adopción, hacer publicaciones e interactuar con otros usuarios.
 
-Con ello, se busca crear una gran red de apoyo para todos los refugios, albergues y hogares temporales que se encuentran a lo largo de toda la República Mexicana, con la finalidad de que cada perro y gato encuentren una nueva familia.
+##Con ello, se busca crear una gran red de apoyo para todos los refugios, albergues y hogares temporales que se encuentran a lo largo de toda la República Mexicana, con la finalidad de que cada perro y gato encuentren una nueva familia.
 
 ## Características Principales  🐩
 🐾 Publicaciones
@@ -20,7 +20,7 @@ Las nuevas noticias y/o publicaciones se muestran dentro del inicio, lo cuál pe
 
 🐕‍🦺 Instalación
 1. Clona este repositorio en tu máquina local:
-  git clone https://github.com/tu_usuario/AdoptaPatas-frontend.git
+  git clone https://github.com/Generation-Mexico-Programar-Te-Duele/AdoptaPatas.git
 2. Instala las dependencias:
   npm install
 3. Inicia la aplicación:
@@ -35,7 +35,7 @@ Equipo "Programar Te Duele" 🦮
 * Rogelio Lopez:  @RogelioLR
 
   #Licencia
-  Este proyecto está bajo la Licencia MIT.
+  Este proyecto está bajo la Licencia @MIT.
 
   ¡Gracias por contribuir a AdoptaPatas!
   
