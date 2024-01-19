@@ -12,9 +12,7 @@ const FormApp = () => {
   const methods = useForm();
   const [success, setSuccess] = useState(false);
   const onSubmit = methods.handleSubmit(data => {
-    const values = methods.getValues()
     console.log(question);
-    console.log(values)
     methods.reset();
   });
 

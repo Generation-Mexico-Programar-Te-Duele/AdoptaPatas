@@ -35,6 +35,9 @@ function Footer() {
             <Link className='text-[15px] md:text-[1rem] hover:text-hover-pink transition' to=''>
               Encuentra una mascota
             </Link>
+            <Link to='solicitud' className='text-[15px] md:text-[1rem] hover:text-hover-pink transition'>
+              Solicitud de Adopción
+            </Link>
             <ul className="w-[35%] md:w-[30%] flex flex-row justify-between">
               <li>
                 <Link
