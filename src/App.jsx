@@ -57,7 +57,7 @@ function App() {
           <Route path='/sign-up' element={<SignUpForm />} />
           <Route path='/involucrate' element={<InvolveApp isLogin={isLogin} />} />
           <Route path='/donation' element={<Donaciones />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route path='/profile' element={<Profile setIsLogin={setIsLogin} />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/solicitud' element={<Solicitud />} />
           <Route path='/formSolicitud' element={<FormSolicitud />} />
