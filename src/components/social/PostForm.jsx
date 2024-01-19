@@ -4,14 +4,24 @@ import { Link } from 'react-router-dom';
 import PostIcon from '../icons/PostIcon';
 import AddPost from '../icons/AddPost';
 import TextareaPost from '../shared/TextareaPost';
+import { RegisterPost } from '../../constants/RegisterPost';
+import { useContext } from 'react';
+import { UserContext } from '../../_auth/context/UserContext';
+import { Textarea } from '../../constants/TextArea';
 
 
 function PostForm() {
-
+  const { usuario } = useContext(UserContext)
+  const [user, setUser] = useState(usuario.id)
   const [isDragOver, setIsDragOver] = useState(false);
   const [file, setFile] = useState();
   const [caption, setCaption] = useState();
+  const [isValidCaption, setIsValidCaption] = useState(false)
+  const [postImage, setPostImage] = useState('')
+  const [isValidImage, setIsValidImage] = useState(false)
   const [location, setLocation] = useState();
+  const [isValidPost, setIsValidPost] = useState(false)
+  console.log(isValidCaption, isValidImage);
 
   const handleDrop = e => {
     e.preventDefault();
@@ -40,14 +50,59 @@ function PostForm() {
       alert("Please select an image");
     }
   }
-
-  const handleCaptionChange = () => {
-    setCaption(e.target.value);
+  const HandleImage = (e) => {
+    const img = e.target.value;
+    setPostImage(img);
+    console.log(img);
+    if (img == '') {
+      setIsValidImage(false);
+    } else {
+      setIsValidImage(true);
+      setPostImage(img);
+    }
   }
 
-  const handleLocationChange = () => {
-    setLocation(e.target.value);
+  const handleCaptionChange = (e) => {
+    const text = e.target.value;
+    setIsValidCaption(true);
+    setCaption(text);
+    console.log(text);
+    /* if (text == '') {
+      setIsValidCaption(false);
+    } else {
+      setIsValidCaption(true);
+      setCaption(text);
+      //setPostContent(text);
+    } */
+
   }
+
+  const HandleSubmit = async (e) => {
+
+    if (
+      isValidCaption && isValidImage
+    ) {
+      try {
+        await RegisterPost(user, caption, postImage);
+        setIsValidPost(true)
+        setCaption('');
+        setPostImage('');
+        console.log('publicado');
+        //getPosts()
+      } catch (error) {
+        console.error('Error en la solicitud 1', error);
+      }
+
+    } else {
+      e.preventDefault();
+      setIsValidPost(false);
+      console.log('Error en el formulario, verifica los datos');
+    }
+  }
+
+   const handleLocationChange = () => {
+     setLocation(e.target.value);
+   }
 
   // const handleSubmit = () => {
   //   console.log("Handle submit");
@@ -72,13 +127,15 @@ function PostForm() {
       <div className='w-full flex flex-col gap-3 '>
         <h4 className='text-[18px] md:text-[22px] font-["Open_Sans_Medium"] text-main-text-color tracking-[-.010rem]'>Pie de página</h4>
         <div className='w-full h-full  flex flex-col p-8 rounded-xl bg-white '>
-          <TextareaPost label="Que estas pensando?" height={"min-h-[8rem]"} onChange={handleCaptionChange} />
+          {/* <TextareaPost label="Que estas pensando?" height={"min-h-[8rem]"} onChange={handleCaptionChange} /> */}
+          <Textarea onChange={handleCaptionChange} className='min-w-[100%]' aria-label="minimum height" minRows={3} placeholder="Que estas pensando...?" required value={caption} />
         </div>
       </div>
 
       <div className='w-full flex flex-col gap-3 '>
         <h4 className='text-[18px] md:text-[22px] font-["Open_Sans_Medium"] text-main-text-color tracking-[-.010rem]'>Comparte una foto</h4>
         <div className='w-full h-full min-h-[20rem] md:min-h-[24rem] lg:min-h-[28rem] flex flex-col items-center justify-center rounded-xl bg-white'>
+        <Textarea onChange={HandleImage} className='min-w-[90%] my-2' aria-label="minimum height" minRows={3} placeholder="Ingresa el link de tu imagen" required value={postImage} />
           {!file &&
             <div
               onDrop={handleDrop}
@@ -111,11 +168,11 @@ function PostForm() {
       <div className='w-full flex flex-col gap-3 '>
         <h4 className='text-[18px] md:text-[22px] font-["Open_Sans_Medium"] text-main-text-color tracking-[-.010rem]'>Agrega una ubicación</h4>
         <div className='w-full h-full flex flex-col gap-8 items-center justify-center p-8 rounded-xl bg-white'>
-          <TextareaPost label="Agrega una ubicación" height={'min-h-[1rem]'} onChange={handleLocationChange} />
-          <button type='submit' className='w-[8rem] h-[3rem] hover:text-main-text-color transition duration-200 ease-in-out cursor-pointer bg-main-text-color px-7 py-[0.5rem] text-white text-[0.95rem] rounded-3xl hover:bg-white font-["Open_Sans_Medium"]'>
-            <Link to='/'>
+          {/* <TextareaPost label="Agrega una ubicación" height={'min-h-[1rem]'} onChange={handleLocationChange} /> */}
+          <button type='submit' className='w-[8rem] h-[3rem] hover:text-main-text-color transition duration-200 ease-in-out cursor-pointer bg-main-text-color px-7 py-[0.5rem] text-white text-[0.95rem] rounded-3xl hover:bg-white font-["Open_Sans_Medium"]' onClick={HandleSubmit}>
+           
               Crear
-            </Link>
+            
           </button>
         </div>
       </div>
