@@ -17,7 +17,6 @@ import { UserProvider } from './_auth/context/userProvider'
 import { Porfile } from './_search/pages/Porfile'
 import Contact from './_contact/Contact'
 import Donaciones from './_search/pages/Donaciones/Donaciones'
-import InvolveApp from './_search/pages/Involucrate/InvolveApp'
 import Search from './_search/pages/Search'
 import PetDetails from './components/pets/PetDetails'
 import NewsFeedLayout from './_social/NewsFeedLayout'
@@ -27,6 +26,9 @@ import FollowersPage from './_social/pages/FollowersPage'
 import PostDetails from './_social/pages/PostDetails'
 
 
+import InvolveApp from './_involucrate/InvolveApp'
+import Solicitud from './_solicitud/Solicitud'
+import FormSolicitud from './_solicitud/FormSolicitud'
 
 function App() {
   const usersData = JSON.parse(localStorage.getItem('users')) || [];
@@ -55,10 +57,12 @@ function App() {
         <Route element={<AuthLayout />}>
           <Route path='/sign-in' element={<SignInForm setIsLogin={setIsLogin} />} />
           <Route path='/sign-up' element={<SignUpForm />} />
-          <Route path='/contact' element={<Contact />} />
           <Route path='/involucrate' element={<InvolveApp isLogin={isLogin} />} />
           <Route path='/donation' element={<Donaciones />} />
           <Route path='/profile' element={<Porfile />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/solicitud' element={<Solicitud />} />
+          <Route path='/formSolicitud' element={<FormSolicitud />} />
         </Route>
         {/* Private Routes */}
         <Route element={<NewsFeedLayout />}>
