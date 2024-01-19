@@ -100,7 +100,7 @@ const PetDetails = () => {
                 </h4>
               </div>
               <div className='text-center'>
-                <ButtonPrimary text={'Aplicar ahora'} />
+                <ButtonPrimary text={'Aplicar ahora'} path={'/solicitud'} />
               </div>
             </div>
           </div>

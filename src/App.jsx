@@ -25,6 +25,8 @@ import CreatePost from './_social/pages/CreatePost'
 import UserProfile from './_social/pages/UserProfile'
 import FollowersPage from './_social/pages/FollowersPage'
 import PostDetails from './_social/pages/PostDetails'
+import Solicitud from './_solicitud/Solicitud'
+import FormSolicitud from './_solicitud/FormSolicitud'
 
 
 
@@ -59,6 +61,8 @@ function App() {
           <Route path='/involucrate' element={<InvolveApp isLogin={isLogin} />} />
           <Route path='/donation' element={<Donaciones />} />
           <Route path='/profile' element={<Porfile />} />
+          <Route path='/solicitud' element={<Solicitud />} />
+          <Route path='/formSolicitud' element={<FormSolicitud />} />
         </Route>
         {/* Private Routes */}
         <Route element={<NewsFeedLayout />}>
