@@ -26,6 +26,7 @@ import FollowersPage from './_social/pages/FollowersPage'
 import PostDetails from './_social/pages/PostDetails'
 import Solicitud from './_solicitud/Solicitud'
 import FormSolicitud from './_solicitud/FormSolicitud'
+import InvolveApp from './_search/pages/Involucrate/InvolveApp'
 
 
 
