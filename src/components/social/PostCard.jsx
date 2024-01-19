@@ -11,7 +11,7 @@ function PostCard({ post }) {
     <div className='bg-white rounded-3xl border border-dark-4 p-5 lg:p-7 w-full max-w-screen-sm'>
       <div className='flex justify-between items-center'>
         <div className='flex items-center gap-3'>
-          <Link to={`/social/profile/${post.id}`}>
+          <Link to={`/social/profile/${post.user.id}`}>
             <img src='{.imageUrl}' alt="" className='rounded-full w-12 h-12 object-cover object-center' />
           </Link>
           <div className='flex flex-col'>

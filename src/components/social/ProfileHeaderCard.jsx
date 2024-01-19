@@ -1,9 +1,29 @@
 import React from 'react'
 import { useContext } from 'react'
 import { UserContext } from '../../_auth/context/UserContext'
+import axios from 'axios'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 function ProfileHeaderCard() {
+
   const {usuario} = useContext(UserContext)
+  const [userPosts, setUserPosts] = useState([])
+
+  // ========= Peticion Get usando api Axios =================
+  const getUserPosts = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/adoptapatas/v1/posts/user-post/${usuario.id}`);
+      setUserPosts(response.data);
+      console.log("GET Axios", posts);
+    } catch (error) {
+      console.log('Error al obtener datos de publicaciones:', error);
+    }
+  };
+  useEffect(() => {
+    getUserPosts()
+  }, [])
+  
   return (
     <div
       className="w-full  md:mx-auto lg:mx-auto xl:mx-auto bg-white rounded-lg text-gray-900">
@@ -28,7 +48,7 @@ function ProfileHeaderCard() {
         </li>
         <li className="flex flex-col items-center justify-around">
           <p className='font-["Open_Sans_Semi"] text-gray-600'>Publicaciones</p>
-          <div className='font-["Open_Sans_Medium"] text-gray-500'>15</div>
+          <div className='font-["Open_Sans_Medium"] text-gray-500'>{userPosts.length}</div>
         </li>
       </ul>
       {/* Agregar modificacion que permita editar o ver perfil dependiendo usuario */}
