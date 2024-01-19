@@ -21,11 +21,11 @@ const questionSet = {
       message: 'Requerido',
     },
     maxLength: {
-      value: 30,
+      value: 300,
       message: 'Máximo 300 carácteres',
     },
     minLength: {
-      value: 300,
+      value: 50,
       message: "Minimo 50 carácteres"
     }
   },
