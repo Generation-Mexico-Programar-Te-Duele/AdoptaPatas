@@ -17,13 +17,18 @@ Cada usuario cuenta con su propio perfil.
 🐾 News feed
 Las nuevas noticias y/o publicaciones se muestran dentro del inicio, lo cuál permite al usuario interactuar con otros.
 
-🐕‍🦺 Instalación
+## 🐕‍🦺 Instalación
 1. Clona este repositorio en tu máquina local:
-  git clone https://github.com/Generation-Mexico-Programar-Te-Duele/AdoptaPatas.git
-2. Instala las dependencias:
-  npm install
-3. Inicia la aplicación:
-  npm run dev
+```
+git clone https://github.com/Generation-Mexico-Programar-Te-Duele/AdoptaPatas.git
+```
+3. Instala las dependencias:
+  ```
+npm install
+```
+4. Inicia la aplicación:
+```  npm run dev
+```
 
 ## Equipo "Programar Te Duele" 🦮 
 - Daniel Iñiguez: [@Daniel-Iniguez](https://github.com/Daniel-Iniguez)
@@ -34,7 +39,7 @@ Las nuevas noticias y/o publicaciones se muestran dentro del inicio, lo cuál pe
 - Rogelio Lopez:  [@RogelioLR](https://github.com/RogelioLR)
 
 
-  #Licencia
+  ##Licencia
   Este proyecto está bajo la Licencia @MIT.
 
   ¡Gracias por contribuir a AdoptaPatas!
