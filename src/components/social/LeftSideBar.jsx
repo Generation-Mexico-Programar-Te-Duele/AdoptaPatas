@@ -6,7 +6,7 @@ function LeftSideBar({ pathname }) {
 
   return (
     // Base container
-    <div class="hidden md:flex w-full min-w-[12rem] flex-col items-center rounded-xl bg-white px-5 py-6 mt-16">
+    <div className="hidden md:flex w-full min-w-[12rem] flex-col items-center rounded-xl bg-white px-5 py-6 mt-16">
       <ul className='flex flex-col gap-6 px-4 items-start justify-center list-none'>
         {sideBarLinks.map((link) => {
           const isActive = pathname === link.route;

@@ -33,6 +33,7 @@ const PetDetails = () => {
     weight,
     sex,
     type,
+    image,
     location,
 
   } = pet;

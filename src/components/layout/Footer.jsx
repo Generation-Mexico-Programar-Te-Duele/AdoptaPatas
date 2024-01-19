@@ -35,13 +35,10 @@ function Footer() {
             <Link className='text-[15px] md:text-[1rem] hover:text-hover-pink transition' to=''>
               Encuentra una mascota
             </Link>
-            <Link to='solicitud' className='text-[15px] md:text-[1rem] hover:text-hover-pink transition'>
-              Solicitud de Adopción
-            </Link>
             <ul className="w-[35%] md:w-[30%] flex flex-row justify-between">
               <li>
                 <Link
-                 to=''
+                  to=''
                   className="text-[24px] md:text-[28px] text-white hover:text-hover-pink transition"
                 >
                   <FaFacebook />
@@ -49,7 +46,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                 to=''
+                  to=''
                   className="text-[24px] md:text-[28px] text-white hover:text-hover-pink transition"
                 >
                   <FaInstagram />
@@ -57,7 +54,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                 to=''
+                  to=''
                   className="text-[24px] md:text-[28px] text-white hover:text-hover-pink transition"
                 >
                   <FaTwitter />
