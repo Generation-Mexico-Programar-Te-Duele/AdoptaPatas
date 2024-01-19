@@ -7,7 +7,7 @@ function PostCard({ user }) {
     <div className='bg-white rounded-3xl border border-dark-4 p-5 lg:p-7 w-full max-w-screen-sm'>
       <div className='flex justify-between items-center'>
         <div className='flex items-center gap-3'>
-          <Link to={`/profile/${user.id}`}>
+          <Link to={`/social/profile/${user.id}`}>
             <img src={user.imageUrl} alt="" className='rounded-full w-12 h-12 object-cover object-center' />
           </Link>
           <div className='flex flex-col'>
@@ -20,7 +20,7 @@ function PostCard({ user }) {
           </div>
         </div>
       </div>
-      <Link to={`/posts/${user.id}`}>
+      <Link to={`/social/posts/${user.id}`} state={user} >
         <div className='text-[14px] font-medium leading-[140%] lg:text-[16px] lg:font-medium py-5'>
           <p>{user.caption}</p>
         </div>

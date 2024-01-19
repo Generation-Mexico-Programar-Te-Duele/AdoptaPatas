@@ -6,7 +6,7 @@ function HomeFeed() {
 
 
   return (
-    <div className='w-full flex gap-2 lg:gap-4 pt-5 pb-10 h-[800px] border-2 border-solid border-purple-500'>
+    <div className='w-full flex gap-2 lg:gap-4 pt-5 pb-10 h-[800px]'>
 
       <div className=' w-full h-full md:flex flex-col gap-6 overflow-y-auto'>
 

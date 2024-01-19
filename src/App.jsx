@@ -58,7 +58,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/involucrate' element={<InvolveApp isLogin={isLogin} />} />
           <Route path='/donation' element={<Donaciones />} />
-          <Route path='/porfile' element={<Porfile />} />
+          <Route path='/profile' element={<Porfile />} />
         </Route>
         {/* Private Routes */}
         <Route element={<NewsFeedLayout />}>

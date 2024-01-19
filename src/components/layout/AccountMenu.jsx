@@ -43,7 +43,7 @@ export default function AccountMenu({ setIsLogin }) {
     };
 
     const handlePorfile = () => {
-        navigate('/porfile');
+        navigate('/profile');
     };
 
     const handleLogOut = (e) => {

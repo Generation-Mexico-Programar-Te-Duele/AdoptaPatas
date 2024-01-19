@@ -12,15 +12,15 @@ const PetCards = ({ pet, breedData, locationData }) => {
 
   return (
     <div
-      className="hover:bg-[#e7b4b6] w-[15rem] inline-block rounded-lg bg-secondary-bg-color shadow-xl transition-all duration-500 ease-in-out"
+      className="hover:bg-[#e7b4b6] sm:w-[15rem] w-[100%] flex flex-row justify-between sm:inline-block rounded-lg bg-secondary-bg-color shadow-xl transition-all duration-500 ease-in-out"
       onClick={() => navigate(`/pet-detail/${id}`, { state: { pet, breedData, locationData } })}>
-      <div className='w-[100%] overflow-hidden m-0 rounded-t-lg'>
+      <div className='w-[40%] sm:w-[100%] overflow-hidden m-0 rounded-l-lg sm:rounded-t-lg'>
         <img
-          className="rounded-t-lg block w-[100%] h-[14rem] object-cover hover:scale-110 transition-all ease-in-out duration-500"
+          className="sm:rounded-t-lg rounded-l-lg block w-[100%] h-[12rem]  sm:h-[14rem] object-cover hover:scale-110 transition-all ease-in-out duration-500"
           src={image}
           alt="" />
       </div>
-      <div className="pt-3 pb-3 px-4 flex flex-col items-start gap-[.15rem]">
+      <div className=" pt-3 pb-3 px-4 flex flex-row flex-wrap sm:items-start sm:w-full w-[60%] sm:flex-col sm:gap-[.15rem]">
         <h5
           className=" text-[1.2rem] text-center font-['Open_Sans_Semi'] text-main-text-color">
           {name}

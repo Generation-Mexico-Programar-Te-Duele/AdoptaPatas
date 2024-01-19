@@ -12,7 +12,7 @@ export const sideBarLinks = [
     label: "Inicio"
   },
   {
-    route: "/social/profile/",
+    route: "/social/profile/:id",
     icon: Profile,
     label: "Mi Perfil"
   },

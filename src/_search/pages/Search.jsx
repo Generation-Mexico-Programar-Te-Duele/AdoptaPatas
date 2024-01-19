@@ -76,14 +76,14 @@ function Search() {
   };
 
   useEffect(() => {
-    // Fetch data based on filters when the component mounts
+
     fetchData();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty dependency array to ensure it runs only once when the component mounts
+
+  }, []);
 
   useEffect(() => {
-    // Update the URL with the current filters
+
     const params = new URLSearchParams();
     params.append('type', type);
     params.append('location', selectedLocation);
@@ -185,7 +185,7 @@ function Search() {
   ]
 
   return (
-    <section className='py-11 gap-10  pb-11 w-[100%] flex flex-col items-center justify-center'>
+    <section className='py-11 gap-10 px-5 pb-11 w-[100%] flex flex-col items-center justify-center'>
 
       {/*Top Bar*/}
 
@@ -200,18 +200,11 @@ function Search() {
                   <p className="absolute mt-3 text-[#b91c1c] font-['Open_Sans_Medium'] text-[.8rem] left-0 mb-2"
                     style={isMounted ? mountedStyle : unmountedStyle}
                     onAnimationEnd={() => { if (!isMounted) setShowError(false) }}>
-                    Location is required
+                    Introduce una ubicación
                   </p>
                 )}
               </div>
             </div>
-            {/* <div className="border-solid border-yellow-500 border-2 flex flex-row gap-10">
-              /* "Apply Filters" button should be outside MultiSelectComponent 
-              <button
-                ref={buttonRef}
-                onClick={handleApplyFilters}
-                className='w-[10rem] h-[3rem] hover:text-white transition duration-200 ease-in-out cursor-pointer bg-[#f3f3f3] px-7 py-[0.5rem] text-black text-[0.95rem] rounded-3xl hover:bg-main-text-color font-["Open_Sans_Medium"]'>Aplicar Filtros</button>
-            </div> */}
           </div>
         </div>
       </div>
@@ -219,16 +212,12 @@ function Search() {
       {/*Left side bar*/}
       <section class=" grid md:grid-cols-12 p-4 m-2 w-[100%] ">
         <div className='md:col-span-3 justify-self-center md:pt-0 p-2'>
-          <div className='left flex flex-col justify-around w-[17.5rem] rounded-lg bg-secondary-bg-color shadow-xl transition-all ease-in-out px-4 py-4'>
-            {/* <div className='py-[1rem] border-solid border-b-gray-500 border-b-[1px]'>
-              <h4 className='font-["Open_Sans_Semi"] text-[1.15rem] text-main-text-color py-[0.5rem]'>Distancia</h4>
-              <SelectBar selected="20 km o menos" label="Distancia" options={options} />
-            </div> */}
-            <div className='py-[1rem] border-solid border-b-gray-500 border-b-[1px]'>
+          <div className='left flex flex-wrap md:flex-col justify-around w-[100%] md:max-w-[17.5rem] rounded-lg bg-secondary-bg-color shadow-xl transition-all ease-in-out px-6 py-4'>
+            <div className='py-[1rem] w-[90%] md:border-solid md:border-b-gray-500 md:border-b-[1px]'>
               <h4 className='font-["Open_Sans_Semi"] text-[1.15rem] text-main-text-color py-[0.5rem]'>Raza</h4>
               <MultiSelectComponent type={type} onBreedChange={setSelectedBreeds} selectedBreeds={selectedBreeds} />
             </div>
-            <div className='py-[1rem] border-solid border-b-gray-500 border-b-[1px]'>
+            <div className='py-[1rem] md:border-solid md:border-b-gray-500 md:border-b-[1px]'>
               <h4 className='font-["Open_Sans_Semi"] text-[1.15rem] text-main-text-color py-[0.5rem]'>Edad</h4>
               <div className="flex flex-col items-start justify-center">
                 <Checkbox htmlFor={"1"} id={"1"} value={"Cachorro"} text="Cachorro" onChange={() => handleAgeChange("Cachorro")} />
@@ -237,7 +226,7 @@ function Search() {
                 <Checkbox htmlFor={"4"} id={"4"} value={"Senior"} text="Senior" onChange={() => handleAgeChange("Senior")} />
               </div>
             </div>
-            <div className='py-[1rem] border-solid border-b-gray-500 border-b-[1px]'>
+            <div className='py-[1rem] md:border-solid md:border-b-gray-500 md:border-b-[1px]'>
               <h4 className='font-["Open_Sans_Semi"] text-[1.15rem] text-main-text-color py-[0.5rem]'>Sexo</h4>
               <div className="flex flex-col items-start justify-center">
                 <Checkbox htmlFor={"5"} id={"5"} value={"Macho"} text="Macho" onChange={() => handleSexChange("Macho")} />
@@ -263,7 +252,7 @@ function Search() {
         </div>
 
         {/*Grid Pets */}
-        <div className='col-span-8 md:col-span-9 lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-y-6 border-solid auto-rows-min'>
+        <div className='col-span-8 md:col-span-9 lg:col-span-9 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-y-6 border-solid auto-rows-min sm:px-0 sm:py-0 py-8'>
           {pets.map((pet) => (
             <PetCards key={pet.id} pet={pet} breedData={selectedBreeds} locationData={locationFilter} />
           ))}

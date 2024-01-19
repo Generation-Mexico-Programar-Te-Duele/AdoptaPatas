@@ -16,9 +16,18 @@ export const Navbar2 = ({ setIsLogin }) => {
 
   const content =
     <>
-      <div className='lg:hidden block absolute top-14 w-full left-0 right-0 h-[100vh]
-        py-8 bg-main-bg-color'>
+      <div className='lg:hidden block absolute top-14 w-full z-[999] left-0 right-0 h-[100vh]
+        py-8' style={{
+          backgroundColor: pathname.includes("social/") ? "White" : "#F2D0D2"
+        }}
+      >
         <ul className='text-center text-[1.1rem] p-20'>
+          <Link to='/profile'>
+            <li className='transition my-4 py-4 border-b hover:bg-dark-pink hover:rounded' >Mi Perfil</li>
+          </Link>
+          <Link to='/social/home'>
+            <li className='transition my-4 py-4 border-b hover:bg-dark-pink hover:rounded' >Mi Red</li>
+          </Link>
           <Link to='/search'>
             <li className='transition my-4 py-4 border-b hover:bg-dark-pink hover:rounded'>Adoptar</li>
           </Link>
