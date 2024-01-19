@@ -3,8 +3,7 @@
 
 
 ## Este repositorio es el frontend de la red social AdoptaPatas, un proyecto desarrollado por el equipo "Programar Te Duele" de la Cohorte 34 de Generation México. AdoptaPatas tiene como objetivo facilitar el apoyo de procesos de adopción responsables y accesibles, en donde los usuarios podrán crear su propio perfil, buscar mascotas que se encuentren disponibles para adopción, hacer publicaciones e interactuar con otros usuarios.
-
-##Con ello, se busca crear una gran red de apoyo para todos los refugios, albergues y hogares temporales que se encuentran a lo largo de toda la República Mexicana, con la finalidad de que cada perro y gato encuentren una nueva familia.
+Con ello, se busca crear una gran red de apoyo para todos los refugios, albergues y hogares temporales que se encuentran a lo largo de toda la República Mexicana, con la finalidad de que cada perro y gato encuentren una nueva familia.
 
 ## Características Principales  🐩
 🐾 Publicaciones
@@ -20,19 +19,20 @@ Las nuevas noticias y/o publicaciones se muestran dentro del inicio, lo cuál pe
 
 🐕‍🦺 Instalación
 1. Clona este repositorio en tu máquina local:
-  git clone https://github.com/Generation-Mexico-Programar-Te-Duele/AdoptaPatas.git
+  ``` git clone https://github.com/Generation-Mexico-Programar-Te-Duele/AdoptaPatas.git
 2. Instala las dependencias:
   npm install
 3. Inicia la aplicación:
   npm run dev
 
-Equipo "Programar Te Duele" 🦮 
-* Daniel Iñiguez: @Daniel-Iniguez
-* Geo Flores: @msge0
-* Izcoatl Guerrero:  @IzcoGLeon
-* Janett Venegas: @JanneMar26
-* Monserrat Silva:  @monserratsilva
-* Rogelio Lopez:  @RogelioLR
+## Equipo "Programar Te Duele" 🦮 
+- Daniel Iñiguez: [@Daniel-Iniguez](https://github.com/Daniel-Iniguez)
+- Geo Flores: [@msge0](https://github.com/msge0)
+- Izcoatl Guerrero:  [@IzcoGLeon](https://github.com/IzcoGLeon)
+- Janett Venegas: [@JanneMar26](https://github.com/JanneMar26)
+- Monserrat Silva:  [@monserratsilva](https://github.com/monserratsilva)
+- Rogelio Lopez:  [@RogelioLR](https://github.com/RogelioLR)
+
 
   #Licencia
   Este proyecto está bajo la Licencia @MIT.
