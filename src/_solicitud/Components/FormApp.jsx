@@ -13,6 +13,7 @@ const FormApp = () => {
   const [success, setSuccess] = useState(false);
   const onSubmit = methods.handleSubmit(data => {
     console.log(data);
+    setSuccess(true);
     methods.reset();
   });
 
@@ -33,7 +34,7 @@ const FormApp = () => {
 
           {success && (
             <p className="flex items-center gap-1 mb-5 font-semibold text-green-500">
-              <BsFillCheckSquareFill />Tu mensaje ha sido enviado de manera exitosa.
+              <BsFillCheckSquareFill />Tu información ha sido enviada de manera exitosa.
             </p>
           )}
 
