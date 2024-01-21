@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import jannet from '../../../assets/img/About-Us/JanettVargas.png'
-import izco from '../../../assets/img/About-Us/IzcoGuerrero.JPG'
+import izco from '../../../assets/img/About-Us/IzcoGuerrero.jpeg'
 import daniel from '../../../assets/img/About-Us/DanielIñiguez.jpeg'
 import monse from '../../../assets/img/About-Us/MonserratSilva.jpeg'
 import rogelio from '../../../assets/img/About-Us/RogelioLopez.jpg'
