@@ -9,6 +9,8 @@ import { colors } from '../../../assets/MUI/Colors';
 import { TextFieldStyle } from '../TextFieldStyles';
 import { RegisterUser } from './RegisterUser.js';
 import axios from 'axios';
+import petimage from '../../../assets/img/contact/Carousel/imgContact(3).jpeg'
+
 
 
 function SignUpForm() {
@@ -85,7 +87,7 @@ function SignUpForm() {
     try {
       const userNameValue = e.target.value;
       //console.log(userNameValue);
-      const response = await axios.get("http://localhost:8080/adoptapatas/v2/users");
+      const response = await axios.get("https://adoptapatas.onrender.com/adoptapatas/v2/users");
       const users = response.data
       console.log(userNameValue);
       //const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -111,7 +113,7 @@ function SignUpForm() {
     try {
       const userEmail = e.target.value;
       //console.log(userEmail);
-      const response = await axios.get("http://localhost:8080/adoptapatas/v2/users");
+      const response = await axios.get("https://adoptapatas.onrender.com/adoptapatas/v2/users");
       const users = response.data
       console.log("GET Axios", users.data);
       //const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -270,7 +272,7 @@ function SignUpForm() {
         {/* Carrusel Perritos*/}
         <div className=" hidden lg:block col-span-2 my-auto">
           <img
-            src="src\assets\img\contact\Carousel\imgContact(3).jpeg"
+            src={petimage}
             className="mx-auto max-w-[60%] rounded-[100%]"
             alt="..."
           />
