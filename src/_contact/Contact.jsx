@@ -16,7 +16,7 @@ const Contact = () => {
         {/* Carrusel Perritos*/}
         <div className=" hidden md:block col-span-2 my-auto">
           <Carousel
-            src="src\assets\img\contact\Carousel\imgContact.jpeg"
+            src={pets}
             alt="Imagen de Perritos"
           />
         </div>
