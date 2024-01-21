@@ -9,6 +9,8 @@ import { colors } from '../../../assets/MUI/Colors';
 import { TextFieldStyle } from '../TextFieldStyles';
 import { RegisterUser } from './RegisterUser.js';
 import axios from 'axios';
+import petimage from '../../../assets/img/contact/Carousel/imgContact(3).jpeg'
+
 
 
 function SignUpForm() {
@@ -270,7 +272,7 @@ function SignUpForm() {
         {/* Carrusel Perritos*/}
         <div className=" hidden lg:block col-span-2 my-auto">
           <img
-            src="src\assets\img\contact\Carousel\imgContact(3).jpeg"
+            src={petimage}
             className="mx-auto max-w-[60%] rounded-[100%]"
             alt="..."
           />

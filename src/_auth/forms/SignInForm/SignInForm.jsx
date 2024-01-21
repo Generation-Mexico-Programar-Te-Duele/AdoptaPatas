@@ -10,6 +10,7 @@ import { TextFieldStyle } from '../TextFieldStyles';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import axios from 'axios';
+import petimage from '../../../assets/img/contact/Carousel/imgContact(4).jpeg'
 
 
 function SignInForm({ setIsLogin }) {
@@ -198,7 +199,7 @@ function SignInForm({ setIsLogin }) {
         {/* Carrusel Perritos*/}
         <div className="hidden lg:block col-span-2 my-auto">
           <img
-            src="src/assets/img/contact/Carousel/imgContact(4).jpeg"
+            src={petimage}
             className="mx-auto max-w-[60%] rounded-[100%]"
             alt="..."
           />

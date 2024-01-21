@@ -2,6 +2,9 @@ import React from 'react'
 import './Contact.css'
 import Carousel from './components/carousel';
 import FormApp from './components/FormApp';
+import pets from '../assets/img/contact/Carousel/imgContact.jpeg'
+
+
 
 const Contact = () => {
 
