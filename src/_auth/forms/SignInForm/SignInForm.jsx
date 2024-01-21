@@ -198,7 +198,7 @@ function SignInForm({ setIsLogin }) {
         {/* Carrusel Perritos*/}
         <div className="hidden lg:block col-span-2 my-auto">
           <img
-            src="src\assets\img\contact\Carousel\imgContact(4).jpeg"
+            src="src/assets/img/contact/Carousel/imgContact(4).jpeg"
             className="mx-auto max-w-[60%] rounded-[100%]"
             alt="..."
           />
