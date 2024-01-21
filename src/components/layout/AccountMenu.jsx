@@ -104,7 +104,7 @@ export default function AccountMenu({ setIsLogin }) {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem onClick={handlePorfile}>
-                    <Avatar alt={usuario.name} src="src\assets\img\About-Us\DanielIñiguezz.jpeg" sx={{ width: 32, height: 32, bgcolor: colors.buttonColor }} />{usuario.name} {usuario.lastName}
+                    <Avatar alt={usuario.name} src="src\assets\img\About-Us\DanielIñiguezz.jpeg" sx={{ width: 32, height: 32, bgcolor: colors.buttonColor }} />{usuario.firstName} {usuario.lastName}
                 </MenuItem>
                 <Divider />
                 <MenuItem onClick={handleClose}>
