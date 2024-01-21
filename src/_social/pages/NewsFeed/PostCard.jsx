@@ -49,7 +49,7 @@ export const PostCard = ({ posts }) => {
     };
 
     const handleDeletePost = async (postId) => {
-        const url = `http://localhost:8080/adoptapatas/v1/posts/${postId}`;
+        const url = `https://adoptapatas.onrender.com/adoptapatas/v1/posts/${postId}`;
         try {
             const response = await axios.delete(url);
             console.log("%Publicación Eliminada", 'color: green; font-weight: bold;', response.data);

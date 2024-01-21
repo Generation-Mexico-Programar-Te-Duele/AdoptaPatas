@@ -96,7 +96,7 @@ function UpdatePorfile() {
         try {
             const userNameValue = e.target.value;
             //console.log(userNameValue);
-            const response = await axios.get("http://localhost:8080/adoptapatas/v2/users");
+            const response = await axios.get("https://adoptapatas.onrender.com/adoptapatas/v2/users");
             const users = response.data
             console.log(userNameValue);
             //const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -118,7 +118,7 @@ function UpdatePorfile() {
         try {
             const userEmail = e.target.value;
             //console.log(userEmail);
-            const response = await axios.get("http://localhost:8080/adoptapatas/v2/users");
+            const response = await axios.get("https://adoptapatas.onrender.com/adoptapatas/v2/users");
             const users = response.data
             console.log("GET Axios", users.data);
             //const users = JSON.parse(localStorage.getItem('users')) || [];

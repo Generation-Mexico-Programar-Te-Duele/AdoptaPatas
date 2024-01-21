@@ -17,7 +17,7 @@ export const Profiles = () => {
     // ========= Peticion Get usando api Axios =================
     const getPosts = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/adoptapatas/v1/users/${userPostId}`);
+            const response = await axios.get(`https://adoptapatas.onrender.com/adoptapatas/v1/users/${userPostId}`);
             setUserPost(response.data);
             console.log("GET Post", response.data);
         } catch (error) {
