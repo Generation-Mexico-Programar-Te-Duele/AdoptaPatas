@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import axios from 'axios';
 import petimage from '../../../assets/img/contact/Carousel/imgContact(4).jpeg'
+import { useEffect } from 'react';
 
 
 function SignInForm({ setIsLogin }) {
@@ -29,13 +30,26 @@ function SignInForm({ setIsLogin }) {
   const [isValidUser, setIsValidUser] = useState(true);
   const [error, setError] = useState('');
 
+  const [users, setUsers] = useState([])
 
-  const handleUserNameChange = async (e) => {
+  // ========= Peticion Get usando api Axios =================
+  const getPosts = async () => {
     try {
+      const response = await axios.get("https://adoptapatas.onrender.com/adoptapatas/v2/users");
+      setUsers(response.data);
+      console.log("GET Axios", users);
+    } catch (error) {
+      console.log('Error al obtener los usaurios:', error);
+    }
+  };
+  useEffect(() => {
+    getPosts()
+  }, [])
+
+  const handleUserNameChange = (e) => {
+    
       const userNameValue = e.target.value;
       console.log(userNameValue);
-      const response = await axios.get("https://adoptapatas.onrender.com/adoptapatas/v2/users");
-      const users = response.data;
       //const usersData = JSON.parse(localStorage.getItem('users')) || [];
       const user = users.find(u => (u.username === userNameValue || u.email === userNameValue));
       if (user) {
@@ -48,9 +62,6 @@ function SignInForm({ setIsLogin }) {
       setUserName(userNameValue);
       setEmail(userNameValue);
 
-    } catch (error) {
-      console.log(error);
-    }
 
   };
 
@@ -91,7 +102,7 @@ function SignInForm({ setIsLogin }) {
         setError('Usuario o contraseña incorrectos');
       }
     } catch (error) {
-      console.error("Error en el servidor",error);
+      console.error("Error en el servidor", error);
     }
 
   };
